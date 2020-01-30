@@ -1,5 +1,7 @@
 sudo: required
 language: generic
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key: $AWS_SECRET_KEY
 services: 
     - docker
 
@@ -8,3 +10,14 @@ before_install:
 
 script:
     - docker run -e CI=true rdthomashoutekier/ud-docker-react npm run test -- --coverage
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "ud-docker-react"
+    env: "Docker-env"
+    bucket_name: "elasticbeanstalk-us-east-2-jfjfjf"
+    bucket_path: "ud-docker-react"
+    on:
+        branch: master
