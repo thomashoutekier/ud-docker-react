@@ -1,0 +1,1 @@
+docker run -it -p 3000:3000 -v /D/courses/Udemy/dockerKubComplete/frontend:/app -v /app/node_modules rdthomashoutekier/frontend sh
